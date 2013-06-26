@@ -1,1 +1,1 @@
-This file was created by IntelliJ IDEA 12.1.4 for binding GitHub repository
+A flume-ng sink that writes to a scribe bus. Useful when migrating from scribe to flume-ng, where scribe consumer migration occurs over time.
