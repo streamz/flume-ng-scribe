@@ -44,16 +44,16 @@ import java.util.List;
 public class ScribeSink extends AbstractSink implements Configurable {
     private static final Logger logger = LoggerFactory.getLogger(ScribeSink.class);
     private long batchSize = 1;
-    private SinkCounter sinkCounter = new SinkCounter(getName());
+    private SinkCounter sinkCounter;
     private FlumeEventSerializer serializer;
     private Scribe.Client client;
     private TTransport transport;
 
     @Override
     public void configure(Context context) {
-        String name = context.getString(ScribeSinkConfigurationConstants.CONFIG_SCRIBE_HOST, getClass().getName());
+        String name = context.getString(ScribeSinkConfigurationConstants.CONFIG_SINK_NAME, "sink-" + hashCode());
         setName(name);
-
+        sinkCounter = new SinkCounter(name);
         batchSize = context.getLong(ScribeSinkConfigurationConstants.CONFIG_BATCHSIZE, 1L);
         String clazz = context.getString(ScribeSinkConfigurationConstants.CONFIG_SERIALIZER, EventToLogEntrySerializer.class.getName());
 

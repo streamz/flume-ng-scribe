@@ -31,7 +31,7 @@ public class ScribeSinkConfigurationConstants {
     /**
      * The name the sink should use.
      */
-    public static final String CONFIG_SINK_NAME = "sink.name";
+    public static final String CONFIG_SINK_NAME = "scribe.sink.name";
     /**
      * Scribe host to send to.
      */
