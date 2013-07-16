@@ -37,7 +37,7 @@
 
     <groupId>org.apache.flume</groupId>
     <artifactId>flume-ng-scribe</artifactId>
-    <version>0.1</version>
+    <version>${flume.version}</version>
 
     <build>
         <plugins>
