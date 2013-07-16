@@ -32,7 +32,7 @@
         <test.include.pattern>**/Test*.java</test.include.pattern>
         <siteUrlDeployment>file://people.apache.org/www/incubator.apache.org/flume</siteUrlDeployment>
         <stagingDirectory>${project.basedir}/target/docs</stagingDirectory>
-        <flume.version>1.3.1</flume.version>
+        <flume.version>1.4.0</flume.version>
     </properties>
 
     <groupId>org.apache.flume</groupId>
