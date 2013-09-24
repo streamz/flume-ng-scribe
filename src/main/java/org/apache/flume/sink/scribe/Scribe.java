@@ -72,11 +72,7 @@ public class Scribe {
         public void Log(List<LogEntry> messages, AsyncMethodCallback<AsyncClient.Log_call> resultHandler) throws TException;
     }
 
-    public static class Client implements TServiceClient, Iface {
-        protected TProtocol iprot_;
-        protected TProtocol oprot_;
-        protected int seqid_;
-
+    public static class Client extends TServiceClient implements Iface {
         public static class Factory implements TServiceClientFactory<Client> {
             public Client getClient(TProtocol prot) {
                 return new Client(prot);
@@ -92,8 +88,7 @@ public class Scribe {
         }
 
         public Client(TProtocol iprot, TProtocol oprot) {
-            iprot_ = iprot;
-            oprot_ = oprot;
+            super(iprot, oprot);
         }
 
         public TProtocol getInputProtocol() {
@@ -160,9 +155,9 @@ public class Scribe {
 
         public void Log(List<LogEntry> messages, AsyncMethodCallback<Log_call> resultHandler) throws TException {
             checkReady();
-            Log_call method_call = new Log_call(messages, resultHandler, this, protocolFactory, transport);
-            this.currentMethod = method_call;
-            manager.call(method_call);
+            Log_call method_call = new Log_call(messages, resultHandler, this, ___protocolFactory, ___transport);
+            ___currentMethod = method_call;
+            ___manager.call(method_call);
         }
 
         public static class Log_call extends TAsyncMethodCall {

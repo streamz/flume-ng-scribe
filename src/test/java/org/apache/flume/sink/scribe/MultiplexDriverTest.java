@@ -34,14 +34,14 @@ import java.util.Map;
 public class MultiplexDriverTest {
     @Test
     public void testIt() throws Exception {
-        RpcClient rpcClient = RpcClientFactory.getDefaultInstance("localhost", 44444);
+        RpcClient rpcClient = RpcClientFactory.getDefaultInstance("127.0.0.1", 4444);
         String[] events = {"a", "b", "c"};
-        String[] cat = {"default1", "default2", "default3"};
+        String[] cat = {"default1", "default1", "default1"};
 
         for (int i = 0; i < 10000; ++i) {
             Map<String, String> hdrs = new HashMap<String, String>();
-            hdrs.put("event.type", "event-" + events[i % events.length]);
-            hdrs.put("scribe.category", cat[i % cat.length]);
+            hdrs.put("type", "event-" + events[i % events.length]);
+            hdrs.put("cat", cat[i % cat.length]);
             Event flumeEvent = EventBuilder.withBody("test event " + i, Charset.forName("UTF8"), hdrs);
             rpcClient.append(flumeEvent);
         }

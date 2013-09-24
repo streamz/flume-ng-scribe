@@ -36,7 +36,7 @@ public class ScribeSinkTest {
     public void setUp() throws Exception {
         Context ctx = new Context();
         ctx.put(ScribeSinkConfigurationConstants.CONFIG_SERIALIZER, EventToLogEntrySerializer.class.getName());
-        ctx.put(ScribeSinkConfigurationConstants.CONFIG_SCRIBE_HOST, "localhost");
+        ctx.put(ScribeSinkConfigurationConstants.CONFIG_SCRIBE_HOST, "127.0.0.1");
         ctx.put(ScribeSinkConfigurationConstants.CONFIG_SCRIBE_PORT, "1463");
         ctx.put(ScribeSinkConfigurationConstants.CONFIG_SCRIBE_CATEGORY_HEADER,
                 ScribeSinkConfigurationConstants.CONFIG_SCRIBE_CATEGORY);
@@ -58,7 +58,7 @@ public class ScribeSinkTest {
     @Test
     public void testProcess() throws Exception {
         Event e = new SimpleEvent();
-        e.getHeaders().put(ScribeSinkConfigurationConstants.CONFIG_SCRIBE_CATEGORY, "default");
+        e.getHeaders().put(ScribeSinkConfigurationConstants.CONFIG_SCRIBE_CATEGORY, "default1");
         e.setBody("This is test ".getBytes());
         sink.getChannel().put(e);
         sink.process();
